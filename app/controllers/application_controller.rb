@@ -4,4 +4,6 @@ class ApplicationController < ActionController::Base
     end
     def mainPage
     end
+    def interventions
+    end
 end

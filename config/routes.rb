@@ -13,10 +13,11 @@ Rails.application.routes.draw do
   resources :building_details
   resources :batteries
   resources :addresses
+  resources :interventions
   devise_for :users
   resources :users
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
-
+   
   get 'quotes/request_quote'
   post '/request_quote', to: 'quotes#create'
 
@@ -36,6 +37,11 @@ Rails.application.routes.draw do
   get '/mainPage', to: "application#mainPage"
   get "/request_quote_page", to: "application#request_quote_page"
   get "/residential-services", to: "application#residential-services"
+
+
+
+
+  
 
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

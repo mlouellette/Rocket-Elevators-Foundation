@@ -112,4 +112,5 @@ gem "twilio-ruby"
 
 gem 'graphql', '~> 2.0', '>= 2.0.15'
 
+gem 'jquery-rails'
 

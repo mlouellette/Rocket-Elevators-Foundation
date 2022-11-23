@@ -17,9 +17,8 @@
 //= require jquery_ujs
 //= require_tree .
 
-
-
 //Google map API requirements DO NOT ERASE
 //= require underscore
 //= require gmaps/google
 //= require googlemapAPI
+
