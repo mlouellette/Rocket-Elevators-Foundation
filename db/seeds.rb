@@ -183,3 +183,20 @@ end
         {lastName: "Hartono", firstName: "Felicia", title: "Scrums are too early"},
         {lastName: "Ai", firstName: "Eileen", title: "They really are"},
     ])
+
+    user = User.create([
+        {email: "Houde@codeboxx.biz", password: "123456"},
+        {email: "Thibault@codeboxx.biz", password: "123456"},
+        {email: "Patry-Jessop@codeboxx.biz", password: "123456"},
+        {email: "Amyot@codeboxx.biz", password: "123456"},
+        {email: "Goupil@codeboxx.biz", password: "123456"},
+        {email: "Boivin@codeboxx.biz", password: "123456"},
+        {email: "Wever@codeboxx.biz", password: "123456"},
+        {email: "Kleinerman@codeboxx.biz", password: "123456"},
+        {email: "Hartono@codeboxx.biz", password: "123456"},
+        {email: "Ai@codeboxx.biz", password: "123456"},
+    ])
+
+    user = User.create(
+        email: Faker::Internet.email,
+        password: '654321')

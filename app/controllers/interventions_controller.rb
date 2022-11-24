@@ -29,7 +29,10 @@ class InterventionsController < ApplicationController
   # POST /interventions or /interventions.json
   def create
     @intervention = Intervention.new(intervention_params)
-    
+    flash[:success] = "Request successfully sent!"
+
+    # @intervention.CustomerID = 8
+
 
     respond_to do |format|
       if @intervention.save
@@ -41,7 +44,18 @@ class InterventionsController < ApplicationController
       end
     end
 
-          # Your freshdesk domain
+      # --------------------- FRESH DESK ----------------------
+      author = Employee.find(@intervention.Author)
+      authorName = author.firstName + " " + author.lastName
+      customer = Customer.find(@intervention.CustomerID)
+      customerName = customer.CompanyName
+      employee = Employee.find(@intervention.EmployeeID)
+      employeeName = employee.firstName + " " + employee.lastName
+      
+            # ------- FreshDesk -------
+
+
+      # Your freshdesk domain
       freshdesk_domain = 'rocketelevatorscanada'
 
       # It could be either your user name or api_key.
@@ -51,75 +65,28 @@ class InterventionsController < ApplicationController
       password_or_x = 'x'
 
       #attachments should be of the form array of Hash with files mapped to the key 'resource'.
-      multipart_payload = JSON.generate({ status: 2,
-
+      multipart_payload = JSON.generate({
+                    status: 2,
                     priority: 1,
-                    type: "Question",
-                    email: leads.contactEmail,
-                    description: "The contact #{leads.contactName} from company #{leads.contactBuisnessName} can be reached at email #{leads.contactEmail} and at phone number #{leads.contactPhone}. #{leads.contactDepartement} has a project named #{leads.projectName} which would require contribution from Rocket Elevators.
+                    type: "Incident",
+                    email: "support@rocketelevatorscanada.freshdesk.com",
+                    description:
+                    "Requester: #{authorName}
                     <br><br>
-                    #{leads.message} 
+                    Client: #{customerName}
                     <br><br>
-                    Attached Message: #{leads.contactAttachment}",
-                    subject: "#{leads.contactName} from #{leads.contactBuisnessName} #{Time.now} "
-
-      })
-
-      freshdesk_api_path = 'api/v2/tickets'
-
-      freshdesk_api_url  = "https://#{freshdesk_domain}.freshdesk.com/#{freshdesk_api_path}"
-
-      site = RestClient::Resource.new(freshdesk_api_url, user_name_or_api_key, password_or_x)
-
-      begin
-        response = site.post(multipart_payload, :content_type => 'application/json')
-        puts "response_code: #{response.code} \nLocation Header: #{response.headers[:Location]} \nresponse_body: #{response.body} \n"
-        rescue RestClient::Exception => exception
-        puts 'API Error: Your request is not successful. If you are not able to debug this error properly, mail us at support@freshdesk.com with the follwing X-Request-Id'
-        puts "X-Request-Id : #{exception.response.headers[:x_request_id]}"
-        puts "Response Code: #{exception.response.code} \nResponse Body: #{exception.response.body} \n"
-      end
-
-      # --------------------- FRESH DESK ----------------------
- 
-      leads = Lead.new
-
-      leads.contactName = params[:CustomerID]
-      leads.contactEmail = params[:BuildingID]
-      leads.contactPhone = params[:BatteryID]
-      leads.contactBuisnessName = params[:ColumnID]
-      leads.contactDepartement = params[:ElevatorID]
-      leads.projectName = params[:EmployeeID]
-      leads.reportMessage = params[:Report]
-
-      current_time = DateTime.now
-
-      leads.contactDate = current_time.strftime "%d/%m/%Y"
-
-      
-      flash[:success] = "Request successfully sent!"
-
-      # Your freshdesk domain
-      freshdesk_domain = 'rocketelevatorscanada'
-
-      # It could be either your user name or api_key.
-      user_name_or_api_key = 'Ai0bKsUV8epuyjb9h7'
-
-      # If you have given api_key, then it should be x. If you have given user name, it should be password
-      password_or_x = 'x'
-
-      #attachments should be of the form array of Hash with files mapped to the key 'resource'.
-      multipart_payload = JSON.generate({ status: 2,
-
-                    priority: 1,
-                    type: "incident",
-                    email: leads.contactEmail,
-                    description: "The contact #{leads.contactName} from company #{leads.contactBuisnessName} can be reached at email #{leads.contactEmail} and at phone number #{leads.contactPhone}. #{leads.contactDepartement} has a project named #{leads.projectName} which would require contribution from Rocket Elevators.
+                    Building ID: #{@intervention.BuildingID}
                     <br><br>
-                    #{leads.message} 
+                    Battery ID: #{@intervention.BatteryID}
                     <br><br>
-                    Attached Message: #{leads.contactAttachment}",
-                    subject: "#{leads.contactName} from #{leads.contactBuisnessName} #{Time.now} "
+                    Column ID: #{@intervention.ColumnID}
+                    <br><br>
+                    Elevator ID: #{@intervention.ElevatorID}
+                    <br><br>
+                    Assigned Employee: #{employeeName}
+                    <br><br>
+                    Description: #{@intervention.Report}",
+                    subject: "Intervention Building ID : #{@intervention.BuildingID}"
 
       })
 
@@ -184,6 +151,7 @@ class InterventionsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def intervention_params
-      params.fetch(:intervention, {})
+      params.require(:intervention).permit(:Author, :CustomerID, :BuildingID, :BatteryID, :ColumnID, :ElevatorID, :EmployeeID, :Report)
+
     end
 end

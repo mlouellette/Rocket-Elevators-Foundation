@@ -2,12 +2,9 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
+
   
 jQuery ->
-
-    if window.location.href.indexOf('reload') == -1
-      window.location.replace window.location.href + '?reload'
-    
 
     $('#step2').parent().hide()
     $('#step3').parent().hide()
@@ -16,8 +13,8 @@ jQuery ->
 
     building = $('#intervention_BuildingID').html()
     # customer = $('#intervention_customer_id').html()
-    $('#intervention_customer_id').change ->
-        customer = $('#intervention_customer_id :selected').text()
+    $('#intervention_CustomerID').change ->
+        customer = $('#intervention_CustomerID :selected').text()
         escaped_customer = customer.replace(/([ #;&,.+*~\':"!^$[\]()=>|\/@])/g, '\\$1')
         options = $(building).filter("optgroup[label='#{escaped_customer}']").html()
 

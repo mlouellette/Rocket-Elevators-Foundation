@@ -38,7 +38,7 @@ Rails.application.routes.draw do
   get "/request_quote_page", to: "application#request_quote_page"
   get "/residential-services", to: "application#residential-services"
 
-
+  post '/interventions/new', to: 'interventions#create'
 
 
   

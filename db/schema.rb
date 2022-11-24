@@ -138,17 +138,18 @@ ActiveRecord::Schema.define(version: 2022_11_21_165732) do
   end
 
   create_table "interventions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
+    t.bigint "Author", null: false
     t.bigint "CustomerID", null: false
     t.bigint "BuildingID", null: false
     t.bigint "BatteryID", null: false
-    t.bigint "ColumnID", null: false
-    t.bigint "ElevatorID", null: false
-    t.bigint "EmployeeID", null: false
+    t.bigint "ColumnID"
+    t.bigint "ElevatorID"
+    t.bigint "EmployeeID"
     t.date "Start"
     t.date "End"
-    t.string "Result"
+    t.string "Result", default: "Incomplete"
     t.string "Report"
-    t.string "Status"
+    t.string "Status", default: "Pending"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -1,8 +1,7 @@
-<%= form_with(model: intervention, local: true) do |form| %>
+<%= form_with(model: intervention, local: true) do |f| %>
   <% if intervention.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(intervention.errors.count, "error") %> prohibited this intervention from being saved:</h2>
-
       <ul>
       <% intervention.errors.full_messages.each do |message| %>
         <li><%= message %></li>
@@ -10,14 +9,11 @@
       </ul>
     </div>
   <% end %>
- 
 
 <%# ----------------------------- intervention form ------------------------------- %>
 <br><br>
-
 <center>
 
-<%= form_for @intervention do |f| %>
     <div class="container">
       <div class-"row">
         <div class="card">
@@ -26,7 +22,7 @@
             <div class="card-title">
 
               <%= f.label :customer_id, "Find a customer" %>
-              <select class="custom-select mb-0 mr-sm-0 mb-sm-0"<%= form.select(:customer_id) do %>>
+              <select class="custom-select mb-0 mr-sm-0 mb-sm-0"<%= f.select(:CustomerID) do %>>
                 <option selected>Find a Customer</option>
                   <%= @customer.each do |c| %>
                 <option value="<%= c.id %>"><%= c.CompanyName %></option>
@@ -115,11 +111,11 @@
      </div>
      </div>
      </div>
+
 </center>
 
      <%# EMPLOYEE ----------------------------------- %>
-
-    <%= form_for @intervention do |u| %>
+   
     <div class="container">
       <div class-"row">
         <div class="card" id="step6">
@@ -127,14 +123,14 @@
           <div class="card-body">
             <div class="card-title">
 
-              <%= u.label :employee_id, "Select an employee" %>
-              <select class="custom-select mb-0 mr-sm-0 mb-sm-0"<%= form.select(:EmployeeID) do %>>
+              <%= f.label :employee_id, "Select an employee" %>
+              <select class="custom-select mb-0 mr-sm-0 mb-sm-0"<%= f.select(:EmployeeID) do %>>
                 <option selected>None</option>
                   <%= @employee.each do |i| %>
                 <option value="<%= i.id %>"><%= i.firstName %> <%= i.lastName %></option>
                 <% end %>
               <% end %>
-              <% end %>
+              
 
               </select>
             </div>
@@ -150,16 +146,27 @@
 
       <div class="row">
 								<div class="col-md-12">
-									<label for="contact:message"></label>
-									<textarea required maxlength="10000" rows="8" class="form-control" name="contactMessage" id="contact:message"></textarea>
+									<label for="Report"></label>
+									<textarea required maxlength="10000" rows="8" class="form-control" name="Report" id="Report"></textarea>
 								</div>
 						</div>
       
       </div>
         </div>
       </div>
+   
+   <%= f.label :Author, "Ticket author " %>
+      <div class="form-floating">
+      <input type="text" readonly class="form-control-plaintext" id="staticEmail" value= "<%= current_user.id %>" <%= f.text_area :Author %>
+      </div>
 
+<center> <div class="actions">
+<%= f.submit "CREATE INTERVENTION TICKET"%>
 <% end %>
-<% end %>
+</div> </center>
 
-<center> <input style="width: 40rem;" class="btn btn-danger actions" type="submit" value="SUBMIT"> </center>
+<br><br><br><br>
+
+
+
+
