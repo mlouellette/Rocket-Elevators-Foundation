@@ -10,9 +10,7 @@
       </ul>
     </div>
   <% end %>
-
-
-
+ 
 
 <%# ----------------------------- intervention form ------------------------------- %>
 <br><br>
@@ -34,7 +32,7 @@
                 <option value="<%= c.id %>"><%= c.CompanyName %></option>
                 <% end %>
               <% end %>
-              
+
               </select>
             </div>
         </div>
@@ -54,6 +52,7 @@
         
         
         <%= f.grouped_collection_select :BuildingID, Customer.order(:CompanyName), :buildings, :CompanyName, :id, :addressBuilding, include_blank: true %>
+       
       </div>
       
      
@@ -82,28 +81,85 @@
 
      <%# STEP 4 ----------------------------------- %>
 
-     <div class="container" id="step4">
-      <div class-"row">
-        <div class="card">
+     <div class-"row ">
+        <div id="step4" class="card">
           <h4 class="card-header">STEP 4</h4>
           <div class="card-body">
+           
+
+      <div class="field">
+        <%= f.label :column_id, "Find a Column" %>
+        <div class="card-title">
+        <%= f.grouped_collection_select :ColumnID, Battery.order(:id), :columns, :id, :id, :id, include_blank: true %>
+      </div>
+      
+     
+     </div>
+     </div>
+     </div>
+
+     <%# STEP 5 ----------------------------------- %>
+
+     <div class-"row ">
+        <div id="step5" class="card">
+          <h4 class="card-header">STEP 5</h4>
+          <div class="card-body">
+           
+
+      <div class="field">
+        <%= f.label :elevator_id, "Find a Elevator" %>
+        <div class="card-title">
+        <%= f.grouped_collection_select :ElevatorID, Column.order(:id), :elevators, :id, :id, :id, include_blank: true %>
+      </div>
+     
+     </div>
+     </div>
+     </div>
+</center>
+
+     <%# EMPLOYEE ----------------------------------- %>
+
+    <%= form_for @intervention do |u| %>
+    <div class="container">
+      <div class-"row">
+        <div class="card" id="step6">
+          <h4 class="card-header">Employee</h4>
+          <div class="card-body">
             <div class="card-title">
-              <%= f.label :column_id, "Find a customer" %>
-              <select class="custom-select mb-0 mr-sm-0 mb-sm-0"<%= form.select(:column_id) do %>>
-                <option selected>Find a Column</option>
-                  <%= @column.each do |c| %>
-                <option value="<%= c.id %>"><%= c.column_id %></option>
+
+              <%= u.label :employee_id, "Select an employee" %>
+              <select class="custom-select mb-0 mr-sm-0 mb-sm-0"<%= form.select(:EmployeeID) do %>>
+                <option selected>None</option>
+                  <%= @employee.each do |i| %>
+                <option value="<%= i.id %>"><%= i.firstName %> <%= i.lastName %></option>
                 <% end %>
               <% end %>
+              <% end %>
+
               </select>
             </div>
         </div>
       </div>
 
+       <%# DESCRIPTION ----------------------------------- %>
 
+      <div class-"row">
+        <div id="step7" class="card">
+          <h4 class="card-header">Description</h4>
+          <div class="card-body">
 
-<input style="width: 40rem;" class="btn btn-danger" type="submit" value="SUBMIT">
-  
+      <div class="row">
+								<div class="col-md-12">
+									<label for="contact:message"></label>
+									<textarea required maxlength="10000" rows="8" class="form-control" name="contactMessage" id="contact:message"></textarea>
+								</div>
+						</div>
+      
+      </div>
+        </div>
+      </div>
+
 <% end %>
 <% end %>
-</center>
+
+<center> <input style="width: 40rem;" class="btn btn-danger actions" type="submit" value="SUBMIT"> </center>
