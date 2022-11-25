@@ -21,14 +21,16 @@ After that go on `http://localhost:3000/`to see the result.
 To check our databases and tables on the terminal you can go on the sql console with : `mysql -u root`.
 To display databases type `SHOW DATABASES;`, and `USE <database_name>;` and now you just need to display the table you want with : `DESCRIBE <table_name>`.
 
-Here is an example :
-![alt text](https://github.com/mlouellette/Rocket_Elevators_Information_System/blob/main/image.png?raw=true)
+# Intervention Page 
+
+At the very right of the main landing page there is "Intervention". You need to be login to be able to send the intervention form to the database
+and at the Freshdesk ticket service. Enter your credentials and receive the confirmation its been sent
 
 # FreshDesk API
 
 FreshDesk is a SaaS platform to which you can subscribe and which allows you to manage the workflow that takes place when a customer comes into contact via the Website either via the “Contact Us” form or also via the “Get a Quote” form. ”In both cases, a ticket must be created in FreshDesk in the same way as a recording is added in the information system.
 
-- Enter your credentials in the "Contact us" form at the bottom of the main landing page or in the "Quote" page.
+- Enter your credentials in the "Contact us" form at the bottom of the "Main Landing Page", in the "Quote" page or "Intervention page"
 - Once its done press the submit button.
 - Go to the admin freshdesk page. ( https://rocketelevatorscanada.freshdesk.com/a/admin )
 - Once inside the freshdesk interface, click the ticket button at the left side of the page. 
