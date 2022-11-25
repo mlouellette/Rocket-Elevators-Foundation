@@ -1,4 +1,4 @@
-# Rocket_Elevators_Information_System
+# Rocket-Elevators-Foundation
 
 # Description
 Rocket Elevators Website using the Ruby on rails framework. This website is connected to mysql database, user login and quote form connected. 
