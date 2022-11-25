@@ -23,7 +23,9 @@ To display databases type `SHOW DATABASES;`, and `USE <database_name>;` and now 
 
 # Intervention Page 
 
-At the very right of the main landing page there is "Intervention". You need to be login to be able to send the intervention form to the database
+- At the very right of the navbar there is "Intervention" button to send a service Ticket
+
+You need to be login to be able to send the intervention form to the database
 and at the Freshdesk ticket service. Enter your credentials and receive the confirmation its been sent
 
 # FreshDesk API
