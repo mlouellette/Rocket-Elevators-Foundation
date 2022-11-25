@@ -1,18 +1,17 @@
 # Place all the behaviors and hooks related to the matching controller here.
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
-
-
   
-jQuery ->
+$(document).on 'turbolinks:load', ->
 
+    # Hides scrolldown selectors for later
     $('#step2').parent().hide()
     $('#step3').parent().hide()
     $('#step4').parent().hide()
     $('#step5').parent().hide()
-
+    
+    # Saves the data in a variable, display data and hides the data that is not related to the selector above
     building = $('#intervention_BuildingID').html()
-    # customer = $('#intervention_customer_id').html()
     $('#intervention_CustomerID').change ->
         customer = $('#intervention_CustomerID :selected').text()
         escaped_customer = customer.replace(/([ #;&,.+*~\':"!^$[\]()=>|\/@])/g, '\\$1')
@@ -21,13 +20,12 @@ jQuery ->
         if options
             $('#intervention_BuildingID').html(options).val("Find a Building").prepend("<option value=" + '0' + ">" + 'Find a Building' + "</option>")
             $('#step2').parent().show()
-            
 
         else
             $('#intervention_BuildingID').empty()
             $('#step2').parent().hide()
             
-            
+    # Saves the data in a variable, display data and hides the data that is not related to the selector above        
     battery = $('#intervention_BatteryID').html()
     $('#intervention_BuildingID').change ->
         customerBattery = $('#intervention_BuildingID :selected').text()
@@ -42,7 +40,7 @@ jQuery ->
             $('#intervention_BatteryID').empty()
             $('#step3').parent().hide()
             
-
+    # Saves the data in a variable, display data and hides the data that is not related to the selector above
     column = $('#intervention_ColumnID').html()
     $('#intervention_BatteryID').change ->
         batteryColumn = $('#intervention_BatteryID :selected').text()
@@ -56,7 +54,7 @@ jQuery ->
             $('#intervention_ColumnID').empty()
             $('#step4').parent().hide()
 
-
+    # Saves the data in a variable, display data and hides the data that is not related to the selector above
     elevator = $('#intervention_ElevatorID').html()
     $('#intervention_ColumnID').change ->
         columnElevator = $('#intervention_ColumnID :selected').text()

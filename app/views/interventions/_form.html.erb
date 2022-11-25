@@ -11,6 +11,7 @@
   <% end %>
 
 <%# ----------------------------- intervention form ------------------------------- %>
+
 <br><br>
 <center>
 
@@ -56,26 +57,24 @@
      </div>
      </div>
    
-     <%# STEP 3 ----------------------------------- %>
+    <%# STEP 3 ----------------------------------- %>
 
      <div class-"row ">
         <div id="step3" class="card">
           <h4 class="card-header">STEP 3</h4>
           <div class="card-body">
-           
 
       <div class="field">
         <%= f.label :battery_id, "Find a Battery" %>
         <div class="card-title">
         <%= f.grouped_collection_select :BatteryID, Building.order(:addressBuilding), :batteries, :addressBuilding, :id, :id, include_blank: true %>
       </div>
-      
      
      </div>
      </div>
      </div>
 
-     <%# STEP 4 ----------------------------------- %>
+    <%# STEP 4 ----------------------------------- %>
 
      <div class-"row ">
         <div id="step4" class="card">
@@ -94,7 +93,7 @@
      </div>
      </div>
 
-     <%# STEP 5 ----------------------------------- %>
+    <%# STEP 5 ----------------------------------- %>
 
      <div class-"row ">
         <div id="step5" class="card">
@@ -114,7 +113,7 @@
 
 </center>
 
-     <%# EMPLOYEE ----------------------------------- %>
+    <%# EMPLOYEE ----------------------------------- %>
    
     <div class="container">
       <div class-"row">
@@ -146,8 +145,8 @@
 
       <div class="row">
 								<div class="col-md-12">
-									<label for="Report"></label>
-									<textarea required maxlength="10000" rows="8" class="form-control" name="Report" id="Report"></textarea>
+									
+                  <%= f.text_area :Report, :cols => 143, :rows => 8, :style => 'resize: none'%>
 								</div>
 						</div>
       

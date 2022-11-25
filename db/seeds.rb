@@ -200,3 +200,4 @@ end
     user = User.create(
         email: Faker::Internet.email,
         password: '654321')
+

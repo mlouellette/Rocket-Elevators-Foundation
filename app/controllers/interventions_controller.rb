@@ -29,7 +29,8 @@ class InterventionsController < ApplicationController
   # POST /interventions or /interventions.json
   def create
     @intervention = Intervention.new(intervention_params)
-    flash[:success] = "Request successfully sent!"
+    # @intervention.Report = 
+    # flash[:success] = "Request successfully sent!"
 
     # @intervention.CustomerID = 8
 
@@ -45,15 +46,13 @@ class InterventionsController < ApplicationController
     end
 
       # --------------------- FRESH DESK ----------------------
+
       author = Employee.find(@intervention.Author)
       authorName = author.firstName + " " + author.lastName
       customer = Customer.find(@intervention.CustomerID)
       customerName = customer.CompanyName
       employee = Employee.find(@intervention.EmployeeID)
       employeeName = employee.firstName + " " + employee.lastName
-      
-            # ------- FreshDesk -------
-
 
       # Your freshdesk domain
       freshdesk_domain = 'rocketelevatorscanada'
@@ -104,7 +103,6 @@ class InterventionsController < ApplicationController
         puts "X-Request-Id : #{exception.response.headers[:x_request_id]}"
         puts "Response Code: #{exception.response.code} \nResponse Body: #{exception.response.body} \n"
       end
-
 
   end
 
