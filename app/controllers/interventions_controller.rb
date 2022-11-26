@@ -29,11 +29,6 @@ class InterventionsController < ApplicationController
   # POST /interventions or /interventions.json
   def create
     @intervention = Intervention.new(intervention_params)
-    # @intervention.Report = 
-    # flash[:success] = "Request successfully sent!"
-
-    # @intervention.CustomerID = 8
-
 
     respond_to do |format|
       if @intervention.save
