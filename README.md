@@ -4,8 +4,8 @@
 
 - Week 1 : https://www.youtube.com/watch?v=cUv8bDaL488
 - Week 2 : https://youtu.be/NQC_oFWBe5E
-- week 3 : https://youtu.be/3ajNUDaZ4q0
-- week 4 : https://www.youtube.com/watch?v=ORT5-VAEA9w
+- Week 3 : https://youtu.be/3ajNUDaZ4q0
+- Week 4 : https://www.youtube.com/watch?v=ORT5-VAEA9w
 
 # Description
 Rocket Elevators Website using the Ruby on rails framework. This website is connected to mysql database, user login and quote form connected. 
