@@ -1,5 +1,12 @@
 # Rocket-Elevators-Foundation
 
+# video links 
+
+- Week 1 : https://www.youtube.com/watch?v=cUv8bDaL488
+- Week 2 : https://youtu.be/NQC_oFWBe5E
+- week 3 : https://youtu.be/3ajNUDaZ4q0
+- week 4 : https://www.youtube.com/watch?v=ORT5-VAEA9w
+
 # Description
 Rocket Elevators Website using the Ruby on rails framework. This website is connected to mysql database, user login and quote form connected. 
 The administrator of the page have access to a back office page that displays the employees section and quote form input results.
@@ -133,9 +140,3 @@ $ rails server
 - Copy one of the querie code blocks in this readme file and paste with the id number of your choice in the graphql interface
 - Press the play button to see the result
 
-
-# Video's Link
-
-Yanni's video : https://www.youtube.com/watch?v=ncBOzzTVfIo
-
-Michael's video : https://www.youtube.com/watch?v=cUv8bDaL488
